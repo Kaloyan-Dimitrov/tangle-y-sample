@@ -1,0 +1,18 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+    "dashboards": {
+      "$customerID": {
+        "models": {
+          "leads": {
+            ".indexOn": ["name"]
+          },
+          "test4e": {
+            ".indexOn": ["name"]
+          }
+        }
+      }
+    }
+  }
+}

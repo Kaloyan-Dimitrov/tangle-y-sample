@@ -9,14 +9,14 @@
 </template>
 
 <script>
-// import AddColumn from "./components/AddColumn.vue";
-// import CurrentRules from "./components/CurrentRules.vue";
+import AddColumn from "./components/AddColumn.vue";
+import CurrentRules from "./components/CurrentRules.vue";
 import { db } from "./firebaseConfig.js";
 export default {
   name: "App",
   components: {
-    // AddColumn,
-    // CurrentRules
+    AddColumn,
+    CurrentRules
   },
   data() {
     return {

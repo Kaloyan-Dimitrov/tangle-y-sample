@@ -16,8 +16,8 @@ const store = new Vuex.Store({
     currentRules: ''
   },
   mutations: {
-    async updateRules( /** state */ ) {
-      // state.currentRules = (await functions.httpsCallable('getRules')()).data;
+    async updateRules(state) {
+      state.currentRules = (await functions.httpsCallable('getRules')()).data;
     },
   }
 })

@@ -1,9 +1,9 @@
 <template>
   <div id="app" class="d-flex">
-    <!-- <AddColumn />
-    <CurrentRules />-->
-    <!-- <b-form-select v-model="selected" :options="columns" size="sm" class="mr-3 w-25"></b-form-select>
-    <b-button size="sm" @click="requestRows()" class="mr-3">Request rows, ordered by name</b-button>-->
+    <AddColumn />
+    <CurrentRules />
+    <b-form-select v-model="selected" :options="columns" size="sm" class="mr-3 w-25"></b-form-select>
+    <b-button size="sm" @click="requestRows()">Request rows, ordered by name</b-button>
     Rows: {{this.rows}}
   </div>
 </template>
@@ -27,15 +27,23 @@ export default {
   },
   computed: {
     columns: function() {
-      if (this.columnsRaw[0] != null && this.columnsRaw[0] != undefined)
+      if (this.columnsRaw != null && this.columnsRaw != undefined)
         return Object.keys(this.columnsRaw[0]);
       else return ["Loading"];
     }
   },
-  methods: {},
+  methods: {
+    async requestRows() {
+      this.rows = (
+        await db
+          .ref("dashboards/customer1/models/" + this.selected)
+          .orderByChild("name")
+          .once("value")
+      ).toJSON();
+    }
+  },
   firebase: {
-    columnsRaw: db.ref("dashboards/customer1"),
-    rows: db.ref("dashboards/customer1/models/test").orderByChild("name")
+    columnsRaw: db.ref("dashboards/customer1")
   }
 };
 </script>

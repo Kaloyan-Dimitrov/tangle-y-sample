@@ -7,9 +7,6 @@
         "models": {
           "leads": {
             ".indexOn": ["name"]
-          },
-          "test4e": {
-            ".indexOn": ["name"]
           }
         }
       }

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { functions } from "../firebaseConfig";
+import { functions, db } from "../firebaseConfig";
 export default {
   name: "AddColumn",
   data() {
@@ -16,6 +16,14 @@ export default {
   },
   methods: {
     async submit() {
+      await db.ref("dashboards/customer1/models" + this.colName).set({
+        row1: {
+          name: "test1"
+        },
+        row2: {
+          name: "test2"
+        }
+      });
       await functions.httpsCallable("changeRules")({ colName: this.colName });
       this.$store.commit("updateRules");
     }

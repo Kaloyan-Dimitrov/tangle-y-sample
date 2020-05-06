@@ -14,16 +14,13 @@ const config = {
 };
 firebase.initializeApp(config)
 
-const db = firebase.firestore()
+const db = firebase.database()
 const auth = firebase.auth()
 // const currentUser = auth.currentUser
 const functions = firebase.functions();
-const dashboardsCollection = db.collection('dashboards')
-
 export {
     auth,
     db,
     firebase,
     functions,
-    dashboardsCollection
 }

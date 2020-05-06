@@ -5,16 +5,19 @@ import './plugins/bootstrap-vue'
 import App from './App.vue';
 import Vuex from 'vuex'
 import {
-  functions
-} from './firebaseConfig';
+  rtdbPlugin
+} from 'vuefire'
+
+Vue.use(rtdbPlugin)
+
 Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     currentRules: ''
   },
   mutations: {
-    async updateRules(state) {
-      state.currentRules = (await functions.httpsCallable('getRules')()).data;
+    async updateRules( /** state */ ) {
+      // state.currentRules = (await functions.httpsCallable('getRules')()).data;
     },
   }
 })

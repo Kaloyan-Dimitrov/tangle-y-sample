@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     columns: function() {
-      if (this.columnsRaw != null && this.columnsRaw != undefined)
+      if (this.columnsRaw[0] != null && this.columnsRaw[0] != undefined)
         return Object.keys(this.columnsRaw[0]);
       else return ["Loading"];
     }
